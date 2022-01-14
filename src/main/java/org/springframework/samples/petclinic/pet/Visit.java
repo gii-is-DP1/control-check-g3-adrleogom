@@ -44,7 +44,11 @@ public class Visit extends BaseEntity {
 	@Column(name = "visit_date")        
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate date;
-
+	
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name="room_id")
+    RecoveryRoom room;
 	/**
 	 * Holds value of property description.
 	 */
@@ -116,11 +120,12 @@ public class Visit extends BaseEntity {
 
 	public RecoveryRoom getRecoveryRoom() {
 		// To be implemented
-		return null;
+		return this.room;
 	}
 
 	public void setRecoveryRoom(RecoveryRoom room) {
 		// To be implemented
+		this.room = room;
 	}
 
 }
